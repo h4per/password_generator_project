@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="me.gosimple.nbvcxz" type="repository">
+    <properties maven-id="me.gosimple:nbvcxz:1.5.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/nbvcxz-1.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="nulab.inc.zxcvbn" type="repository">
+    <properties maven-id="com.nulab-inc:zxcvbn:1.9.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/zxcvbn-1.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
