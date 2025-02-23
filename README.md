@@ -69,7 +69,4 @@ Your generated password is here! --> A@9xL!z4P*2Q
 
 ## License
 This project is open-source under the MIT License. Feel free to modify and improve!
-
 ---
-
-
