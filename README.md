@@ -12,10 +12,10 @@ Additionally, the program integrates the **zxcvbn** password strength estimator 
 ---
 
 ## Features
-Generate passwords with customizable character sets
-Use predefined presets for quick password generation
-Create completely random passwords
-Evaluate password strength with **zxcvbn**
+1. Generate passwords with customizable character sets.
+2. Use predefined presets for quick password generation.
+3. Create completely random passwords.
+4. Evaluate password strength with **zxcvbn**.
 
 ---
 
@@ -34,7 +34,7 @@ java PasswordGenerator
 ---
 
 ## Usage
-1. Run the program and select an option from the menu.\n
+1. Run the program and select an option from the menu.
 2. Follow the prompts to customize or select a preset.
 3. Receive your generated password along with its security score.
 
