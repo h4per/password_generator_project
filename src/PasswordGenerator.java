@@ -6,7 +6,6 @@ import java.security.SecureRandom;
 import com.nulabinc.zxcvbn.Zxcvbn;
 import com.nulabinc.zxcvbn.Strength;
 
-
 public class PasswordGenerator {
 
     //Constants containing character sets
@@ -37,16 +36,16 @@ public class PasswordGenerator {
 
         // Asking user what type of characters in their password
         System.out.print("Do you want to include uppercase letters? (y/n): ");
-        boolean upperCaseIncluded = input.next().equalsIgnoreCase("y");
+        boolean upperCaseIncluded = input.next().trim().equalsIgnoreCase("y");
 
         System.out.print("Do you want to include lowercase letters? (y/n): ");
-        boolean lowerCaseIncluded = input.next().equalsIgnoreCase("y");
+        boolean lowerCaseIncluded = input.next().trim().equalsIgnoreCase("y");
 
         System.out.print("Do you want to include digits? (y/n): ");
-        boolean digitIncluded = input.next().equalsIgnoreCase("y");
+        boolean digitIncluded = input.next().trim().equalsIgnoreCase("y");
 
         System.out.print("Do you want to include special characters? (y/n): ");
-        boolean specialCharIncluded = input.next().equalsIgnoreCase("y");
+        boolean specialCharIncluded = input.next().trim().equalsIgnoreCase("y");
 
         // Setting the generation of password on user's choices
         StringBuilder UserPresets = new StringBuilder();
@@ -155,14 +154,43 @@ public class PasswordGenerator {
     }
 
     public static String passwordStrength(String passwordToCheck) {
+
+        // The main password strength estimator
         Zxcvbn zxcvbn = new Zxcvbn();
         Strength strength = zxcvbn.measure(passwordToCheck);
 
-        System.out.println("\nPassword Strength Analysis:");
-        System.out.println("Score: " + strength.getScore() + " (0 = Very Weak, 4 = Very Strong)");
-        System.out.println("Crack time estimate: " + strength.getCrackTimesDisplay().getOfflineSlowHashing1e4perSecond());
+        System.out.println("\nPassword strength analysis:");
+        System.out.println("Generated password got " + strength.getScore() + " out of 4 (0 = Very Weak, 4 = Very Strong)");
+        System.out.println("Estimated time to crack the password: " + strength.getCrackTimesDisplay().getOfflineSlowHashing1e4perSecond());
 
         return passwordToCheck;
+
+        // Alternative way to estimate the strength of password
+//        int score = 0;
+//        if (passwordToCheck.length() >= 8) {
+//            score++;
+//        }
+//        if (passwordToCheck.matches(".*\\d.*")) {
+//            score++;
+//        }
+//        if (passwordToCheck.matches(".*[A-Z].*")) {
+//            score++;
+//        }
+//        if (passwordToCheck.matches(".*[a-z].*")) {
+//            score++;
+//        }
+//        if (passwordToCheck.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
+//            score++;
+//        }
+//        if (score == 5) {
+//            return "VERY STRONG PASSWORD";
+//        } else if (score == 4) {
+//            return "STRONG PASSWORD";
+//        } else if (score == 3) {
+//            return "AVERAGE PASSWORD";
+//        } else {
+//            return "WEAK PASSWORD";
+//        }
     }
 
     // Main method that displays menu and options on generating the password
@@ -170,32 +198,43 @@ public class PasswordGenerator {
 
         // Greeting message and menu
         System.out.print("\nHello and welcome! This is will help you to generate a strong password!(´｡• ᵕ •｡)\n");
-        System.out.print("Here is our options:\n1) Setting the password on your own. \n2) Using ready presets.\n3) Generate literally random password!\n\nChoose one of the options: ");
-
         Scanner input = new Scanner(System.in);  // Scanner to read user input
-        int options = input.nextInt();
 
-        // Calling functions and generating the password on user's choices
-         if(options == 1) {
-             String password = generatePassword();
-             String passwordStrenght = passwordStrength(password);
+        while (true){
+            // Calling functions and generating the password on user's choices
+            System.out.print("\nHere is our options:\n1) Setting the password on your own. \n2) Using ready presets.\n3) Generate literally random password!\n\nChoose one of the options: ");
 
-             System.out.println("\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧\nYour generated password is here! --> " + passwordStrenght);
-         }
-         else if(options == 2) {
-                String password = presetsPassword();
-                String passwordStrenght = passwordStrength(password);
+            if (input.hasNextInt()) {
+                int options = input.nextInt();
 
-                System.out.println("\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧\nYour generated password is here! --> " + passwordStrenght);
-         }
-         else if(options == 3) {
-             String password = generateCompletelyRandomPassword();
-             String passwordStrenght = passwordStrength(password);
+                if(options == 1) {
+                    String password = generatePassword();
+                    String passwordStrenght = passwordStrength(password);
 
-             System.out.println("\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧\nYour completely random generated password is here! --> " + passwordStrenght);
-         }
-         else {
-                System.out.println("Goodbye! ( ° ∀ ° )ﾉﾞ");
+                    System.out.println("\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧\nYour generated password is here! --> " + passwordStrenght);
+                    System.out.println("Goodbye! ( ° ∀ ° )ﾉﾞ");
+                    break;
+                }
+                else if(options == 2) {
+                    String password = presetsPassword();
+                    String passwordStrenght = passwordStrength(password);
+
+                    System.out.println("\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧\nYour generated password is here! --> " + passwordStrenght);
+                    System.out.println("Goodbye! ( ° ∀ ° )ﾉﾞ");
+                    break;
+                }
+                else if(options == 3) {
+                    String password = generateCompletelyRandomPassword();
+                    String passwordStrenght = passwordStrength(password);
+
+                    System.out.println("\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧\nYour completely random generated password is here! --> " + passwordStrenght);
+                    System.out.println("Goodbye! ( ° ∀ ° )ﾉﾞ");
+                    break;
+                }
+            } else {
+                System.out.println("Invalid input! Please enter an integer.");
+                input.next(); // Clear the invalid input
+            }
         }
     }
 }
