@@ -15,14 +15,14 @@ Additionally, the program integrates the **zxcvbn** password strength estimator 
 1. Generate passwords with customizable character sets.
 2. Use predefined presets for quick password generation.
 3. Create completely random passwords.
-4. Evaluate password strength with **zxcvbn**.
+4. Evaluate password strength with **zxcvbn4j**.
 
 ---
 
 ## Installation
 ### Prerequisites:
 - Java (JDK 8+)
-- [nbvcxz (zxcvbn Java Implementation)](https://github.com/GoSimpleLLC/nbvcxz)
+- [zxcvbn4j (zxcvbn Java Implementation)](https://github.com/nulab/zxcvbn4j)
 
 
 3. Compile and run the program:
