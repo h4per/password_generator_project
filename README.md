@@ -34,7 +34,7 @@ java PasswordGenerator
 ---
 
 ## Usage
-1. Run the program and select an option from the menu.
+1. Run the program and select an option from the menu.\n
 2. Follow the prompts to customize or select a preset.
 3. Receive your generated password along with its security score.
 
